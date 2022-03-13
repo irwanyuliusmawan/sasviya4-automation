@@ -1,0 +1,80 @@
+<Playlist Version="2.0">
+  <Rule Name="Includes" Match="Any">
+    <Rule Match="All">
+      <Property Name="Solution" />
+      <Rule Match="Any">
+        <Rule Match="All">
+          <Property Name="Project" Value="SASViya4Test" />
+          <Rule Match="Any">
+            <Rule Match="All">
+              <Property Name="Namespace" Value="SASViya4Test" />
+              <Rule Match="Any">
+                <Rule Match="All">
+                  <Property Name="Class" Value="SASViyaDataProfilingTest" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="SASViya4Test.SASViyaDataProfilingTest.Run a profile report" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="Run a profile report" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+                <Rule Match="All">
+                  <Property Name="Class" Value="SASViyaDataStudioTest" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="SASViya4Test.SASViyaDataStudioTest.Add new calculated column to a dataset" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="Add new calculated column to a dataset" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+                <Rule Match="All">
+                  <Property Name="Class" Value="SASViyaLineageTest" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="SASViya4Test.SASViyaLineageTest.Display the relationship of a simple component" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="Display the relationship of a simple component" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+                <Rule Match="All">
+                  <Property Name="Class" Value="SASViyaDataExplorerTest" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="SASViya4Test.SASViyaDataExplorerTest.Access Data Explorer" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="Access Data Explorer" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+                <Rule Match="All">
+                  <Property Name="Class" Value="SASViyaDataQualityTest" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="SASViya4Test.SASViyaDataQualityTest.Add new modified column to a dataset" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="Add new modified column to a dataset" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="SASViya4Test.SASViyaDataQualityTest.Verify QKB is imported and set as default" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="Verify QKB is imported and set as default" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+              </Rule>
+            </Rule>
+          </Rule>
+        </Rule>
+      </Rule>
+    </Rule>
+  </Rule>
+</Playlist>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+	<RunConfiguration>
+		<!-- TestSessionTimeout was introduced in Visual Studio 2017 version 15.5 -->
+		<!-- Specify timeout in milliseconds. A valid value should be greater than 0 -->
+		<TestSessionTimeout>900000</TestSessionTimeout>
+	</RunConfiguration>
+	<TestRunParameters>
+		<Parameter name="SASEnvMgrUrl" value="https://sinbrv.gelsandbox.aws.unx.sas.com/SASEnvironmentManager" />
+		<Parameter name="SASDriveUrl" value="https://sinbrv.gelsandbox.aws.unx.sas.com/SASDrive" />
+		<Parameter name="SASStudioUrl" value="https://sinbrv.gelsandbox.aws.unx.sas.com/SASStudio" />
+		<Parameter name="SASVisualAnalyticsUrl" value="https://sinbrv.gelsandbox.aws.unx.sas.com/SASVisualAnalytics" />
+		<Parameter name="SASThemeDesigner" value="https://sinbrv.gelsandbox.aws.unx.sas.com/SASThemeDesigner" />
+		<Parameter name="SASDataExplorerUrl" value="https://sinbrv.gelsandbox.aws.unx.sas.com/SASDataExplorer" />
+		<Parameter name="SASLineageUrl" value="https://sinbrv.gelsandbox.aws.unx.sas.com/SASLineage" />
+		<Parameter name="SASDataStudioUrl" value="https://sinbrv.gelsandbox.aws.unx.sas.com/SASDataStudio" />
+		<Parameter name="SASConversationDesignerUrl" value="https://sinbrv.gelsandbox.aws.unx.sas.com/SASConversationDesigner" />
+		<Parameter name="headless" value="false" />
+		<Parameter name="DriverPath" value="C:\\Users\\sinbrv\\Downloads\\chromedriver_win32_new" />
+		<Parameter name="environment" value="Windows" />
+		<Parameter name="testFilePath" value="C:\\Test\\csv_file.csv" />
+		<Parameter name="demographicfilepath" value="C:\\Test\\demographics.csv" />
+		<Parameter name="screenshotFilepath" value="C:\\Test\\" />
+		<Parameter name="username" value="viya_admin" />
+		<Parameter name="password" value="Password123" />
+		<Parameter name="InitialPageLoadSleep" value="25000" />
+		<Parameter name="IntermediatePageLoadSleep" value="2000" />
+		<!-- C:\Users\sinbrv\csv_file.csv -->
+	</TestRunParameters>
+</RunSettings>

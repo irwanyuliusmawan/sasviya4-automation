@@ -1,0 +1,128 @@
+<Playlist Version="2.0">
+  <Rule Name="Includes" Match="Any">
+    <Rule Match="All">
+      <Property Name="Solution" />
+      <Rule Match="Any">
+        <Rule Match="All">
+          <Property Name="Project" Value="SASViya4Test" />
+          <Rule Match="Any">
+            <Rule Match="All">
+              <Property Name="Namespace" Value="SASViya4Test" />
+              <Rule Match="Any">
+                <Rule Match="All">
+                  <Property Name="Class" Value="SASViyaDeploymentTests" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="SASViya4Test.SASViyaDeploymentTests.Check Pods are Running Successfully" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="Check Pods are Running Successfully" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="SASViya4Test.SASViyaDeploymentTests.Check Status of Kubernetes Worker Nodes" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="Check Status of Kubernetes Worker Nodes" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+                <Rule Match="All">
+                  <Property Name="Class" Value="SASViyaStudioTest" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="SASViya4Test.SASViyaStudioTest.Connect to CAS" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="Connect to CAS" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="SASViya4Test.SASViyaStudioTest.Explore data from CAS" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="Explore data from CAS" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="SASViya4Test.SASViyaStudioTest.Load data to CAS" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="Load data to CAS" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="SASViya4Test.SASViyaStudioTest.Promote sample data to CAS" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="Promote sample data to CAS" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="SASViya4Test.SASViyaStudioTest.Submit a SAS code" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="Submit a SAS code" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+                <Rule Match="All">
+                  <Property Name="Class" Value="SASViyaEnvironmentManagerTest" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="SASViya4Test.SASViyaEnvironmentManagerTest.Access Data page" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="Access Data page" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="SASViya4Test.SASViyaEnvironmentManagerTest.Access Servers page" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="Access Servers page" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="SASViya4Test.SASViyaEnvironmentManagerTest.Create a validation folder" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="Create a validation folder" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="SASViya4Test.SASViyaEnvironmentManagerTest.Import Demographics" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="Import Demographics" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="SASViya4Test.SASViyaEnvironmentManagerTest.Login to Environment Manager" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="Login to Environment Manager" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+                <Rule Match="All">
+                  <Property Name="Class" Value="SASViyaThemeDesigner" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="SASViya4Test.SASViyaThemeDesigner.Access Theme Designer" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="Access Theme Designer" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+                <Rule Match="All">
+                  <Property Name="Class" Value="SASViyaDriveTest" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="SASViya4Test.SASViyaDriveTest.Access SAS Drive" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="Access SAS Drive" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+              </Rule>
+            </Rule>
+          </Rule>
+        </Rule>
+      </Rule>
+    </Rule>
+  </Rule>
+</Playlist>

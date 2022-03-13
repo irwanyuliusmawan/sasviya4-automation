@@ -1,0 +1,64 @@
+<Playlist Version="2.0">
+  <Rule Name="Includes" Match="Any">
+    <Rule Match="All">
+      <Property Name="Solution" />
+      <Rule Match="Any">
+        <Rule Match="All">
+          <Property Name="Project" Value="SASViya4Test" />
+          <Rule Match="Any">
+            <Rule Match="All">
+              <Property Name="Namespace" Value="SASViya4Test" />
+              <Rule Match="Any">
+                <Rule Match="All">
+                  <Property Name="Class" Value="SASViyaJobFlowScheulerTest" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="SASViya4Test.SASViyaJobFlowScheulerTest.Save Code" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="Save Code" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="SASViya4Test.SASViyaJobFlowScheulerTest.Schedule Code" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="Schedule Code" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+                <Rule Match="All">
+                  <Property Name="Class" Value="SASViyaConversationDesignerTest" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="SASViya4Test.SASViyaConversationDesignerTest.Conversation Designer Related Test Cases" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="Conversation Designer Related Test Cases" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+                <Rule Match="All">
+                  <Property Name="Class" Value="SASViyaVisualAnalyticsTest" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="SASViya4Test.SASViyaVisualAnalyticsTest.Create a Report" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="Create a Report" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="SASViya4Test.SASViyaVisualAnalyticsTest.Create a map Report" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="Create a map Report" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+              </Rule>
+            </Rule>
+          </Rule>
+        </Rule>
+      </Rule>
+    </Rule>
+  </Rule>
+</Playlist>
