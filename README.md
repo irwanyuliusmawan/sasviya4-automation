@@ -82,6 +82,7 @@ To prepare or excute the test case below is necessary
 ## Executing the Test Case on Windows 10 Environment <br />
 1. Download the code from the gitlab from main branch - https://gitlab.sas.com/sinbrv/sasviya4-automation
    Note - GitLab can be cloned used either with ssh or https. Please check below screenshot for example
+   ![viya4-iac-azure](../../assets/Selenium2.png)
 
 2. Create the folder Test on C drive and add below 2 input test files. You can get input files from _assets folders.
 
