@@ -51,6 +51,7 @@ Objective is to validate different below test cases to be executed for SAS Viya 
 To prepare or excute the test case below is necessary
 1. For Windows 10 or above
    - Install Latest version of Chrome Browser. Once installation done then check the Chrome Version as below -
+     ![sasviya4-automation](../../assets/Selenium12.png)
 
    - Chrome Driver Download. Download the chrome driver based on the version above.
      https://chromedriver.chromium.org/downloads
@@ -62,6 +63,8 @@ To prepare or excute the test case below is necessary
 
    - Visual Studio 2022 Community Edition. During instllation just select .NET desktop development if you don't want to get everything installed.
      https://visualstudio.microsoft.com/vs/community/
+
+     ![sasviya4-automation](../../assets/Selenium13.png)
 
 2. For Linux Ubuntu 20.04
    <b>TBD</b>
@@ -154,12 +157,19 @@ Example of .runsettings for Windows
 
 5. Set the RunSettings in Visual. This is required for the first time during setup.
    - In Visual Studio, Select Test -> Configure Run Settings -> Auto Detect runsettings file
+
    - In Visual Studio, Select Test -> Configure Run Settings -> Select Solution Wide runsettings file -> Select the .runsettings file from your solution.
+     ![sasviya4-automation](../../assets/Selenium8.png)
+
    
 6. Open the Test Explorer and Run the Playlists for running actual test case
    - In Visual Studio, Select Test -> Test Explorer -> Select the Playlist and Run Test
+     ![sasviya4-automation](../../assets/Selenium9.png)
+     ![sasviya4-automation](../../assets/Selenium10.png)
 
 7. After Successful test you can see the Test Result
+   ![sasviya4-automation](../../assets/Selenium10.png)
+   ![sasviya4-automation](../../assets/Selenium14.png)
 
 
 ## Executing the Test Case on Linux Ubuntu Environment <br />
