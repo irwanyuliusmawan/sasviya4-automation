@@ -50,24 +50,29 @@ Objective is to validate different below test cases to be executed for SAS Viya 
 ## Prerequisite
 To prepare or excute the test case below is necessary
 1. For Windows 10 or above
-   - Chrome Browser Latest Version
-   - Chrome Driver Download
+   - Install Latest version of Chrome Browser. Once installation done then check the Chrome Version as below -
+
+   - Chrome Driver Download. Download the chrome driver based on the version above.
      https://chromedriver.chromium.org/downloads
 
-   - Selenium IDE for Chrome
+     Note - Once chrome driver is downloaded, It need to unzip and path of the same need to be noted for further use.
+
+   - Selenium IDE for Chrome. This is optional if you want to get help for recording.
      https://www.selenium.dev/selenium-ide/
 
-   - Visual Studio 2022 Community Edition
+   - Visual Studio 2022 Community Edition. During instllation just select .NET desktop development if you don't want to get everything installed.
      https://visualstudio.microsoft.com/vs/community/
 
 2. For Ubuntu 20.04
    - Chromium
    - Chrome Driver Setup
    - Dotnet
+
 3. Accessibilty
-   - SAS Viya 4 deployment and Application URL must be accessible from the machine / server were test need to be performed.
+   - SAS Viya 4 deployment and Application URL must be accessible from the machine / server were test is to be performed.
    - SAS Viya 4 should be deployed with all the latest features. 
-   - Attached test cases are validated with SAS viya 4 Version
+   - Attached test cases are validated with SAS viya 4 Version 2021.2.3 Stable.
+
 4. Others
    - Test case are writtent in C# so basic understanding of C# language is required.
    - HTML DOM Understanding is required to write selenium automation.
