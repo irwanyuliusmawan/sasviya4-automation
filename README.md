@@ -63,27 +63,94 @@ To prepare or excute the test case below is necessary
    - Visual Studio 2022 Community Edition. During instllation just select .NET desktop development if you don't want to get everything installed.
      https://visualstudio.microsoft.com/vs/community/
 
-2. For Ubuntu 20.04
+2. For Linux Ubuntu 20.04
+   <b>TBD</b>
    - Chromium
    - Chrome Driver Setup
    - Dotnet
-
+    <br />
 3. Accessibilty
    - SAS Viya 4 deployment and Application URL must be accessible from the machine / server were test is to be performed.
    - SAS Viya 4 should be deployed with all the latest features. 
    - Attached test cases are validated with SAS viya 4 Version 2021.2.3 Stable.
+   <br />
 
 4. Others
    - Test case are writtent in C# so basic understanding of C# language is required.
    - HTML DOM Understanding is required to write selenium automation.
 
-## Executing the Test Case oon Windows 10  Environment <br />
+## Executing the Test Case on Windows 10 Environment <br />
 1. Download the code from the gitlab from main branch - https://gitlab.sas.com/sinbrv/sasviya4-automation
-2. Create the folder Test on C drive and add below 2 input test files
-3. Open the SASViya4Test solution and Restore the Package and Run Build
-5. Modify RunSettings file as below
-4. Provide the RunSettings in Visual Studio
-5. Open the Test Explorer and Run the Playlists for running actual test case
+   Note - GitLab can be cloned used either with ssh or https. Please check below screenshot for example
+
+2. Create the folder Test on C drive and add below 2 input test files. You can get input files from _assets folders.
+
+3. Open the SASViya4Test solution and Restore the Package. Once solution is ready you can Run Build.
+
+4. Modify RunSettings file as below
+   | S. No  | Parameters                 | Description                         
+   | -------|:---------------------------| :--------------------------------
+   | 1.     | SASEnvMgrUrl               | URL for SAS Environment Manager e.g. 
+   | 2.     | SASDriveUrl                | URL for SAS Drive
+   | 3.     | SASStudioUrl               | URL for SAS Studio
+   | 4.     | SASVisualAnalyticsUrl      | URL for SAS Viual Analytics
+   | 5.     | SASThemeDesigner           | URL for Theme Designer
+   | 6.     | SASDataExplorerUrl         | URL for SAS Data Explorer
+   | 7.     | SASLineageUrl              | URL for SAS Lineage 
+   | 8.     | SASDataStudioUrl           | URL for SAS Data Studio
+   | 9.     | SASConversationDesignerUrl | URL for SAS Conversational Design for BOTS
+   | 10.    | headless                   | Value could be true or false. e.g. false if you need to see UI flow
+   | 11.    | DriverPath                 | Value will be Chrome Driver Path only when used with Windows.
+   | 12.    | environment                | Value will be either Linux or Windows, Depending on which environment used
+   | 13.    | testFilePath               | CSV Test File Path to be imported during test
+   | 14.    | demographicfilepath        | Demographic Test File Path to be imported during test
+   | 15.    | screenshotFilepath         | Screenshot File Path
+   | 15.    | username                   | SAS User name
+   | 15.    | password                   | SAS Password
+
+Example of .runsettings for Windows
+```
+<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+	<RunConfiguration>
+		<!-- TestSessionTimeout was introduced in Visual Studio 2017 version 15.5 -->
+		<!-- Specify timeout in milliseconds. A valid value should be greater than 0 -->
+		<TestSessionTimeout>900000</TestSessionTimeout>
+	</RunConfiguration>
+	<TestRunParameters>
+		<Parameter name="SASEnvMgrUrl" value="https://sinbrv.gelsandbox.aws.unx.sas.com/SASEnvironmentManager" />
+		<Parameter name="SASDriveUrl" value="https://sinbrv.gelsandbox.aws.unx.sas.com/SASDrive" />
+		<Parameter name="SASStudioUrl" value="https://sinbrv.gelsandbox.aws.unx.sas.com/SASStudio" />
+		<Parameter name="SASVisualAnalyticsUrl" value="https://sinbrv.gelsandbox.aws.unx.sas.com/SASVisualAnalytics" />
+		<Parameter name="SASThemeDesigner" value="https://sinbrv.gelsandbox.aws.unx.sas.com/SASThemeDesigner" />
+		<Parameter name="SASDataExplorerUrl" value="https://sinbrv.gelsandbox.aws.unx.sas.com/SASDataExplorer" />
+		<Parameter name="SASLineageUrl" value="https://sinbrv.gelsandbox.aws.unx.sas.com/SASLineage" />
+		<Parameter name="SASDataStudioUrl" value="https://sinbrv.gelsandbox.aws.unx.sas.com/SASDataStudio" />
+		<Parameter name="SASConversationDesignerUrl" value="https://sinbrv.gelsandbox.aws.unx.sas.com/SASConversationDesigner" />
+		<Parameter name="headless" value="false" />
+		<Parameter name="DriverPath" value="C:\\Users\\sinbrv\\Downloads\\chromedriver_win32_new" />
+		<Parameter name="environment" value="Windows" />
+		<Parameter name="testFilePath" value="C:\\Test\\csv_file.csv" />
+		<Parameter name="demographicfilepath" value="C:\\Test\\demographics.csv" />
+		<Parameter name="screenshotFilepath" value="C:\\Test\\" />
+		<Parameter name="username" value="viya_admin" />
+		<Parameter name="password" value="Password123" />
+		<Parameter name="InitialPageLoadSleep" value="25000" />
+		<Parameter name="IntermediatePageLoadSleep" value="2000" />
+		<!-- C:\Users\sinbrv\csv_file.csv -->
+	</TestRunParameters>
+</RunSettings>
+```
+
+5. Set the RunSettings in Visual. This is required for the first time during setup.
+   - In Visual Studio, Select Test -> Configure Run Settings -> Auto Detect runsettings file
+   - In Visual Studio, Select Test -> Configure Run Settings -> Select Solution Wide runsettings file -> Select the .runsettings file from your solution.
+   
+6. Open the Test Explorer and Run the Playlists for running actual test case
+   - In Visual Studio, Select Test -> Test Explorer -> Select the Playlist and Run Test
+
+7. After Successful test you can see the Test Result
 
 
-
+## Executing the Test Case on Linux Ubuntu Environment <br />
+<b>TBD</b>
