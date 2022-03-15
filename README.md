@@ -67,7 +67,6 @@ To prepare or excute the test case below is necessary
      ![sasviya4-automation](../../assets/Selenium13.png)
 
 2. For Linux Ubuntu 20.04
-   <b>TBD</b>
    - Chromium
    ```
    sudo apt-get install -y libappindicator1 fonts-liberation
