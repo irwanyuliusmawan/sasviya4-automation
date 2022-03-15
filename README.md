@@ -69,8 +69,38 @@ To prepare or excute the test case below is necessary
 2. For Linux Ubuntu 20.04
    <b>TBD</b>
    - Chromium
+   ```
+   sudo apt-get install -y libappindicator1 fonts-liberation
+   sudo apt-get install -f
+   sudo apt install -y unzip xvfb libxi6 libgconf-2-4
+   wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+   sudo dpkg -i google-chrome*.deb
+   sudo curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add
+   sudo bash -c "echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' >> /etc/apt/sources.list.d/google-chrome.list"
+   sudo apt -y update
+   sudo apt -y install google-chrome-stable
+   sudo apt --fix-broken install
+   sudo apt -y install google-chrome-stable
+   google-chrome --version
+   ```
    - Chrome Driver Setup
+   ```
+   wget https://chromedriver.storage.googleapis.com/99.0.4844.51/chromedriver_linux64.zip
+   unzip chromedriver_linux64.zip
+   sudo mv chromedriver /usr/bin/chromedriver
+   sudo chown root:root /usr/bin/chromedriver
+   sudo chmod +x /usr/bin/chromedriver
+   ```
    - Dotnet
+   ```
+   wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+   sudo dpkg -i packages-microsoft-prod.deb
+   sudo apt-get update;   
+   sudo apt-get install -y apt-transport-https 
+   sudo apt-get update
+   sudo apt-get install -y dotnet-sdk-6.0
+   dotnet --version
+   ```
     <br />
 3. Accessibilty
    - SAS Viya 4 deployment and Application URL must be accessible from the machine / server were test is to be performed.
