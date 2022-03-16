@@ -220,13 +220,13 @@ cd ~
 mkdir sasviya4test
 ```
 
-4. Copy 2 input test files into sasviya4test\test\ directory. 2 csv files you can find in below location () from cloned project. 
+4. Copy 2 input test files into sasviya4test\test\ directory. 2 csv files you can find in test folder, if not there then copy from assets/csv_file.csv and assets/demographics.csv.
 
 5. Create .runsettings file into sasviya4test directory.
 ```
 sudo nano .runsettings
 ```
-```
+
 Example of .runsettings for Windows
 ```
 <?xml version="1.0" encoding="utf-8"?>
