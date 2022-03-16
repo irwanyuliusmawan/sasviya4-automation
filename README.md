@@ -214,7 +214,7 @@ Example of .runsettings for Windows
 2. Clone the code from the gitlab from main branch - https://gitlab.sas.com/sinbrv/sasviya4-automation
    Note - GitLab can be cloned used either with ssh or https. Please check below screenshot for example
    
-3. Create the folder sasviya4test on home directory of the Ubuntu environment. Copy the pubish version code into that directory.
+3. Create the folder sasviya4test on home directory of the Ubuntu environment. Copy the library from cloned copy in the gitlab, from the publish folder. 
 ```
 cd ~
 mkdir sasviya4test
