@@ -12,6 +12,8 @@ namespace SASViya4Test
     public class SASViyaJobFlowScheulerTest
     {
         IWebDriver driver;
+
+        string env;
         string url;
         string envurl;
         string Validationfilepath;
@@ -22,12 +24,13 @@ namespace SASViya4Test
         [SetUp]
         public void SetUp()
         {
-            string env = TestContext.Parameters.Get("environment");
+            env = TestContext.Parameters.Get("environment");
             if (env == "Linux")
             {
                 ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.AddArgument("--headless");
                 chromeOptions.AddArgument("--no-sandbox");
+                chromeOptions.AddArgument("--ignore-certificate-errors");
                 driver = new ChromeDriver("/usr/bin", chromeOptions);
             }
             else
@@ -44,7 +47,7 @@ namespace SASViya4Test
             Validationfilepath = folderPath + "/SASJobFlow/";
         }
 
-        [Test, Order(1)]
+        [Test, Order(1), Category("Playlist3")]
         [TestCase(TestName = "Save Code")]
         public void ExcuteFlow1()
         {
@@ -97,7 +100,7 @@ namespace SASViya4Test
             }
         }
 
-        [Test, Order(2)]
+        [Test, Order(2), Category("Playlist3")]
         [TestCase(TestName = "Schedule Code")]
         public void ExcuteFlow2()
         {
@@ -167,7 +170,7 @@ namespace SASViya4Test
             new Actions(driver).SendKeys(Keys.Enter).Perform();
             Thread.Sleep(3000);
 
-            Automation.GetScreenshot(driver, Validationfilepath + "schedule.png");
+            Automation.GetScreenshot(driver, Validationfilepath + "schedule.png", env);
             TestContext.AddTestAttachment(Validationfilepath + "schedule.png");
             Thread.Sleep(3000);
 

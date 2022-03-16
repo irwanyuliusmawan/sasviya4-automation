@@ -13,6 +13,7 @@ namespace SASViya4Test
     {
         IWebDriver driver;
 
+        string env;
         string url;
         string sasStudioUrl;
         string Validationfilepath;
@@ -22,12 +23,13 @@ namespace SASViya4Test
         [SetUp]
         public void SetUp()
         {
-            string env = TestContext.Parameters.Get("environment");
+            env = TestContext.Parameters.Get("environment");
             if (env == "Linux")
             {
                 ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.AddArgument("--headless");
                 chromeOptions.AddArgument("--no-sandbox");
+                chromeOptions.AddArgument("--ignore-certificate-errors");
                 driver = new ChromeDriver("/usr/bin", chromeOptions);
             }
             else
@@ -44,7 +46,7 @@ namespace SASViya4Test
             Validationfilepath = folderPath + "/SASDataQuality/";
         }
 
-        [Test, Order(1)]
+        [Test, Order(1), Category("Playlist2")]
         [TestCase(TestName = "Verify QKB is imported and set as default")]
         public void QKBCheck()
         {
@@ -79,11 +81,11 @@ namespace SASViya4Test
             driver.FindElement(By.Id("envmgrapp_appContainer_lfn_23_icn")).Click();
             Thread.Sleep(6000);
             
-            Automation.GetScreenshot(driver, Validationfilepath + "QKB.png");
+            Automation.GetScreenshot(driver, Validationfilepath + "QKB.png", env);
             TestContext.AddTestAttachment(Validationfilepath + "QKB.png");
         }
 
-        [Test, Order(1)]
+        [Test, Order(2), Category("Playlist2")]
         [TestCase(TestName = "Add new modified column to a dataset")]
         public void Transform()
         {
@@ -140,7 +142,7 @@ namespace SASViya4Test
             driver.FindElement(By.XPath("//div[@class='sapMSBInner']/button")).Click();
             Thread.Sleep(15000);
 
-            Automation.GetScreenshot(driver, Validationfilepath + "dataset.png");
+            Automation.GetScreenshot(driver, Validationfilepath + "dataset.png", env);
             TestContext.AddTestAttachment(Validationfilepath + "dataset.png");
         }
 

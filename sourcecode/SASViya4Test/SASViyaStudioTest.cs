@@ -11,6 +11,8 @@ namespace SASViya4Test
     public class SASViyaStudioTest
     {
         IWebDriver driver;
+
+        string env;
         string url;
         string Validationfilepath;
         string folderPath;
@@ -19,12 +21,13 @@ namespace SASViya4Test
         [SetUp]
         public void SetUp()
         {
-            string env = TestContext.Parameters.Get("environment");
+            env = TestContext.Parameters.Get("environment");
             if (env == "Linux")
             {
                 ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.AddArgument("--headless");
                 chromeOptions.AddArgument("--no-sandbox");
+                chromeOptions.AddArgument("--ignore-certificate-errors");
                 driver = new ChromeDriver("/usr/bin", chromeOptions);
             }
             else
@@ -40,7 +43,7 @@ namespace SASViya4Test
             Validationfilepath = folderPath + "/SASStudio/";
         }
 
-        [Test, Order(1)]
+        [Test, Order(1), Category("Playlist1")]
         [TestCase(TestName = "Submit a SAS code")]
         public void CodeExecution()
         {
@@ -70,7 +73,7 @@ namespace SASViya4Test
             Thread.Sleep(6000);
             driver.FindElement(By.Id("__jsview6--program1--codeSubmitButton1")).Click();
             Thread.Sleep(6000);
-            Automation.GetScreenshot(driver, Validationfilepath + "code1.png");
+            Automation.GetScreenshot(driver, Validationfilepath + "code1.png", env);
             TestContext.AddTestAttachment(Validationfilepath + "code1.png");
 
             Thread.Sleep(5000);
@@ -82,7 +85,7 @@ namespace SASViya4Test
             Thread.Sleep(6000);
             driver.FindElement(By.Id("__jsview6--program2--codeSubmitButton1")).Click();
             Thread.Sleep(6000);
-            Automation.GetScreenshot(driver, Validationfilepath + "code2.png");
+            Automation.GetScreenshot(driver, Validationfilepath + "code2.png", env);
             TestContext.AddTestAttachment(Validationfilepath + "code2.png");
 
             Thread.Sleep(5000);
@@ -94,7 +97,7 @@ namespace SASViya4Test
             Thread.Sleep(6000);
             driver.FindElement(By.Id("__jsview6--program3--codeSubmitButton1")).Click();
             Thread.Sleep(6000);
-            Automation.GetScreenshot(driver, Validationfilepath + "code3.png");
+            Automation.GetScreenshot(driver, Validationfilepath + "code3.png", env);
             TestContext.AddTestAttachment(Validationfilepath + "code3.png");
 
             Thread.Sleep(5000);
@@ -106,7 +109,7 @@ namespace SASViya4Test
             Thread.Sleep(6000);
             driver.FindElement(By.Id("__jsview6--program4--codeSubmitButton1")).Click();
             Thread.Sleep(6000);
-            Automation.GetScreenshot(driver, Validationfilepath + "code4.png");
+            Automation.GetScreenshot(driver, Validationfilepath + "code4.png", env);
             TestContext.AddTestAttachment(Validationfilepath + "code4.png");
 
             Thread.Sleep(5000);
@@ -118,7 +121,7 @@ namespace SASViya4Test
             Thread.Sleep(6000);
             driver.FindElement(By.Id("__jsview6--program5--codeSubmitButton1")).Click();
             Thread.Sleep(6000);
-            Automation.GetScreenshot(driver, Validationfilepath + "code5.png");
+            Automation.GetScreenshot(driver, Validationfilepath + "code5.png", env);
             TestContext.AddTestAttachment(Validationfilepath + "code5.png");
         }
 

@@ -12,6 +12,8 @@ namespace SASViya4Test
     public class SASViyaVisualAnalyticsTest
     {
         IWebDriver driver;
+
+        string env;
         string url;
         string Reportfilepath;
         string folderPath;
@@ -21,12 +23,13 @@ namespace SASViya4Test
         [SetUp]
         public void SetUp()
         {
-            string env = TestContext.Parameters.Get("environment");
+            env = TestContext.Parameters.Get("environment");
             if (env == "Linux")
             {
                 ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.AddArgument("--headless");
                 chromeOptions.AddArgument("--no-sandbox");
+                chromeOptions.AddArgument("--ignore-certificate-errors");
                 driver = new ChromeDriver("/usr/bin", chromeOptions);
             }
             else
@@ -43,7 +46,7 @@ namespace SASViya4Test
             demographicfilepath = TestContext.Parameters.Get("demographicfilepath");
         }
 
-        [Test, Order(1)]
+        [Test, Order(1), Category("Playlist3")]
         [TestCase(TestName = "Create a Report")]
         public void ReportValiation()
         {
@@ -90,11 +93,11 @@ namespace SASViya4Test
             driver.FindElement(By.XPath("//div[@class='vanSidePanelContent']/div/div/div/div/div/section[4]/div[2]/div/ul/li[1]")).Click();
             new Actions(driver).DoubleClick(driver.FindElement(By.XPath("//div[@class='vanSidePanelContent']/div/div/div/div/div/section[4]/div[2]/div/ul/li[1]"))).Perform();
             Thread.Sleep(3000);
-            Automation.GetScreenshot(driver, Reportfilepath + "reports.png");
+            Automation.GetScreenshot(driver, Reportfilepath + "reports.png", env);
             TestContext.AddTestAttachment(Reportfilepath + "reports.png");
         }
 
-        [Test, Order(2)]
+        [Test, Order(2), Category("Playlist3")]
         [TestCase(TestName = "Create a map Report")]
         public void MapReport()
         {
@@ -162,7 +165,7 @@ namespace SASViya4Test
             driver.FindElement(By.XPath("//div[@role='alertdialog']/footer/div/button")).Click();
             Thread.Sleep(6000);
 
-            Automation.GetScreenshot(driver, Reportfilepath + "georeports.png");
+            Automation.GetScreenshot(driver, Reportfilepath + "georeports.png", env);
             TestContext.AddTestAttachment(Reportfilepath + "georeports.png");
         }
 

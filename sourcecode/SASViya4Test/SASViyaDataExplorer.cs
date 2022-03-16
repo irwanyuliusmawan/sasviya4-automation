@@ -12,6 +12,7 @@ namespace SASViya4Test
     {
         IWebDriver driver;
 
+        string env;
         string url;
         string Validationfilepath;
         string folderPath;
@@ -20,12 +21,13 @@ namespace SASViya4Test
         [SetUp]
         public void SetUp()
         {
-            string env = TestContext.Parameters.Get("environment");
+            env = TestContext.Parameters.Get("environment");
             if (env == "Linux")
             {
                 ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.AddArgument("--headless");
                 chromeOptions.AddArgument("--no-sandbox");
+                chromeOptions.AddArgument("--ignore-certificate-errors");
                 driver = new ChromeDriver("/usr/bin", chromeOptions);
             }
             else
@@ -41,7 +43,7 @@ namespace SASViya4Test
             Validationfilepath = folderPath + "/SASDataExplorer/";
         }
 
-        [Test, Order(1)]
+        [Test, Order(1), Category("Playlist2")]
         [TestCase(TestName = "Access Data Explorer")]
         public void DataExplorer()
         {
@@ -68,7 +70,7 @@ namespace SASViya4Test
             Automation.WaitUntilElementExists(driver, "//div[@id='data_explorer_ui']", 60);
             Thread.Sleep(6000);
 
-            Automation.GetScreenshot(driver, Validationfilepath + "data.png");
+            Automation.GetScreenshot(driver, Validationfilepath + "data.png", env);
             TestContext.AddTestAttachment(Validationfilepath + "data.png");
         }
 

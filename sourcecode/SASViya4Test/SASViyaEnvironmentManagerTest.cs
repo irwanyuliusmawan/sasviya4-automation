@@ -13,6 +13,8 @@ namespace SASViya4Test
     public class SASViyaEnvironmentManagerTest
     {
         IWebDriver driver;
+
+        string env;
         string url;
         string Loginfilepath;
         string ValidationFolderfilepath;
@@ -26,12 +28,13 @@ namespace SASViya4Test
         [SetUp]
         public void SetUp()
         {
-            string env = TestContext.Parameters.Get("environment");
+            env = TestContext.Parameters.Get("environment");
             if (env == "Linux")
             {
                 ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.AddArgument("--headless");
                 chromeOptions.AddArgument("--no-sandbox");
+                chromeOptions.AddArgument("--ignore-certificate-errors");
                 driver = new ChromeDriver("/usr/bin", chromeOptions);
             }
             else
@@ -53,7 +56,7 @@ namespace SASViya4Test
         }
 
        
-        [Test, Order(1)]
+        [Test, Order(1), Category("Playlist1")]
         [TestCase(TestName = "Login to Environment Manager")]
         public void Login()
         {
@@ -93,21 +96,21 @@ namespace SASViya4Test
             driver.FindElement(By.Id("ev_identity_typeFilter-label")).Click();
             driver.FindElement(By.XPath("//ul/li[1]")).Click();
             Thread.Sleep(3000);
-            Automation.GetScreenshot(driver,Loginfilepath + "users.png");
+            Automation.GetScreenshot(driver,Loginfilepath + "users.png", env);
             TestContext.AddTestAttachment(Loginfilepath + "users.png");
             driver.FindElement(By.Id("ev_identity_typeFilter-label")).Click();
             driver.FindElement(By.XPath("//ul/li[2]")).Click();
             Thread.Sleep(3000);
-            Automation.GetScreenshot(driver, Loginfilepath + "groups.png");
+            Automation.GetScreenshot(driver, Loginfilepath + "groups.png", env);
             TestContext.AddTestAttachment(Loginfilepath + "groups.png");
             driver.FindElement(By.Id("ev_identity_typeFilter-label")).Click();
             driver.FindElement(By.XPath("//ul/li[3]")).Click();
             Thread.Sleep(3000);
-            Automation.GetScreenshot(driver, Loginfilepath + "customegroup.png");
+            Automation.GetScreenshot(driver, Loginfilepath + "customegroup.png", env);
             TestContext.AddTestAttachment(Loginfilepath + "customegroup.png");
         }
 
-        [Test, Order(2)]
+        [Test, Order(2), Category("Playlist1")]
         [TestCase(TestName = "Create a validation folder")]
         public void ValidateValidationFolder()
         {
@@ -140,7 +143,7 @@ namespace SASViya4Test
             driver.FindElement(By.CssSelector(".sasContentNavNewFolderInput")).SendKeys(input);
             driver.FindElement(By.CssSelector(".sasContentNavNewFolderInput")).SendKeys(Keys.Enter);
             Thread.Sleep(8000);
-            Automation.GetScreenshot(driver, ValidationFolderfilepath + "folders.png");
+            Automation.GetScreenshot(driver, ValidationFolderfilepath + "folders.png", env);
             Thread.Sleep(8000);
             driver.FindElement(By.Id("sasev_content_AuthButton-internalBtn-img")).Click();
             TestContext.AddTestAttachment(ValidationFolderfilepath + "folders.png");
@@ -148,7 +151,7 @@ namespace SASViya4Test
             driver.FindElement(By.Id("sasev_content_edit_auth_toolbar_menuitem-unifiedmenu-txt")).Click();
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             Thread.Sleep(4000);
-            Automation.GetScreenshot(driver, ValidationFolderfilepath + "authentication.png");
+            Automation.GetScreenshot(driver, ValidationFolderfilepath + "authentication.png", env);
             driver.FindElement(By.Id("sas-ev-shared-authorization-AuthorizationUIFactory-authDialog-closeXButton-img")).Click();
             Thread.Sleep(4000);
             driver.FindElement(By.Id("ContentSelectionPane-basic-cntntSelPane-toolbar-DeleteButton-img")).Click();
@@ -156,7 +159,7 @@ namespace SASViya4Test
             TestContext.AddTestAttachment(ValidationFolderfilepath + "authentication.png");
         }
 
-        [Test, Order(3)]
+        [Test, Order(3), Category("Playlist1")]
         [TestCase(TestName = "Access Data page")]
         public void AccessDataPage()
         {
@@ -190,17 +193,17 @@ namespace SASViya4Test
             Thread.Sleep(2000);
             driver.FindElement(By.Id("__xmlview2--importSelectedButton-BDI-content")).Click();
             Thread.Sleep(3000);
-            Automation.GetScreenshot(driver, AccessDataPagefilepath + "fileimport.png");
+            Automation.GetScreenshot(driver, AccessDataPagefilepath + "fileimport.png", env);
             TestContext.AddTestAttachment(AccessDataPagefilepath + "fileimport.png");
             driver.FindElement(By.CssSelector("#\\__xmlview3--availableTabFilter > .sapMITBContentArrow")).Click();
             var xpath = string.Format("(//div[@id='__xmlview7--availableList-listContent']/ul/li)[1]");
             driver.FindElement(By.XPath(xpath)).Click();
             Thread.Sleep(5000);
-            Automation.GetScreenshot(driver, AccessDataPagefilepath + "filedata.png");
+            Automation.GetScreenshot(driver, AccessDataPagefilepath + "filedata.png", env);
             TestContext.AddTestAttachment(AccessDataPagefilepath + "filedata.png");
         }
 
-        [Test, Order(4)]
+        [Test, Order(4), Category("Playlist1")]
         [TestCase(TestName = "Access Servers page")]
         public void AccessServerPage()
         {
@@ -227,17 +230,17 @@ namespace SASViya4Test
             Thread.Sleep(5000);
             driver.FindElement(By.Id("EVNextCasServersViewPage--sasev_casserver_list-rows-row0-col0")).Click();
             Thread.Sleep(3000);
-            Automation.GetScreenshot(driver, AccessServerPagefilepath + "casserver.png");
+            Automation.GetScreenshot(driver, AccessServerPagefilepath + "casserver.png", env);
             TestContext.AddTestAttachment(AccessServerPagefilepath + "casserver.png");
             Thread.Sleep(2000);
             driver.FindElement(By.Id("EVNextCasServersViewPage--sasev_casserver_configurationButton-img")).Click();
             driver.FindElement(By.CssSelector("#\\__filter2 > .sapMITBContentArrow")).Click();
             Thread.Sleep(2000);
-            Automation.GetScreenshot(driver, AccessServerPagefilepath + "casnodes.png");
+            Automation.GetScreenshot(driver, AccessServerPagefilepath + "casnodes.png", env);
             TestContext.AddTestAttachment(AccessServerPagefilepath + "casnodes.png");
         }
 
-        [Test, Order(5)]
+        [Test, Order(5), Category("Playlist1")]
         [TestCase(TestName = "Import Demographics")]
         public void ImportDemographic()
         {

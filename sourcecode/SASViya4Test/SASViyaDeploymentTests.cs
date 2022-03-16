@@ -10,7 +10,7 @@ namespace SASViya4Test
         {
         }
 
-        [Test, Order(1)]
+        [Test, Order(1), Category("Playlist4")]
         [TestCase(TestName = "Check Status of Kubernetes Worker Nodes")]
         public void CheckNodeStatus()
         {
@@ -25,7 +25,7 @@ namespace SASViya4Test
             Assert.IsTrue(iCount >= 3, "The Active Nodes are Greater then 3");
         }
 
-        [Test, Order(2)]
+        [Test, Order(2), Category("Playlist4")]
         [TestCase(TestName = "Check Pods are Running Successfully")]
         public void CheckPodStatus()
         {

@@ -12,6 +12,8 @@ namespace SASViya4Test
     public class SASViyaDataStudioTest
     {
         IWebDriver driver;
+
+        string env;
         string url;
         string Validationfilepath;
         string folderPath;
@@ -20,12 +22,13 @@ namespace SASViya4Test
         [SetUp]
         public void SetUp()
         {
-            string env = TestContext.Parameters.Get("environment");
+            env = TestContext.Parameters.Get("environment");
             if (env == "Linux")
             {
                 ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.AddArgument("--headless");
                 chromeOptions.AddArgument("--no-sandbox");
+                chromeOptions.AddArgument("--ignore-certificate-errors");
                 driver = new ChromeDriver("/usr/bin", chromeOptions);
             }
             else
@@ -41,7 +44,7 @@ namespace SASViya4Test
             Validationfilepath = folderPath + "/SASDataStudio/";
         }
 
-        [Test, Order(1)]
+        [Test, Order(1), Category("Playlist2")]
         [TestCase(TestName = "Add new calculated column to a dataset")]
         public void AddNewColumn()
         {
@@ -95,7 +98,7 @@ namespace SASViya4Test
             driver.FindElement(By.XPath("//header[@class='sapMPageHeader']/div/div[3]/div/div/button")).Click();
             Thread.Sleep(15000);
 
-            Automation.GetScreenshot(driver, Validationfilepath + "dataset.png");
+            Automation.GetScreenshot(driver, Validationfilepath + "dataset.png", env);
             TestContext.AddTestAttachment(Validationfilepath + "dataset.png");
         }
 

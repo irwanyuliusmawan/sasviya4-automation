@@ -11,6 +11,8 @@ namespace SASViya4Test
     public class SASViyaDataProfilingTest
     {
         IWebDriver driver;
+
+        string env;
         string url;
         string Validationfilepath;
         string folderPath;
@@ -19,12 +21,13 @@ namespace SASViya4Test
         [SetUp]
         public void SetUp()
         {
-            string env = TestContext.Parameters.Get("environment");
+            env = TestContext.Parameters.Get("environment");
             if (env == "Linux")
             {
                 ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.AddArgument("--headless");
                 chromeOptions.AddArgument("--no-sandbox");
+                chromeOptions.AddArgument("--ignore-certificate-errors");
                 driver = new ChromeDriver("/usr/bin", chromeOptions);
             }
             else
@@ -40,7 +43,7 @@ namespace SASViya4Test
             Validationfilepath = folderPath + "/SASDataProfiling/";
         }
 
-        [Test, Order(1)]
+        [Test, Order(1), Category("Playlist2")]
         [TestCase(TestName = "Run a profile report")]
         public void Profiling()
         {
@@ -65,7 +68,7 @@ namespace SASViya4Test
             driver.FindElement(By.XPath("//div[@id='__xmlview1--dataPanelIconTabBar--header-head']/div[3]")).Click();
             Thread.Sleep(8000);
 
-            if(Automation.WaitUntilElementExists(driver, "//div[@id='sasMZeroStateButtonGroup']", 10))
+            if(Automation.WaitUntilElementExists(driver, "//div[@class='sasMZeroStateButtonGroup']/button", 30))
             {
                 driver.FindElement(By.XPath("//div[@class='sasMZeroStateButtonGroup']/button")).Click();
             }
@@ -76,7 +79,7 @@ namespace SASViya4Test
 
             Thread.Sleep(15000);
 
-            Automation.GetScreenshot(driver, Validationfilepath + "profilereport.png");
+            Automation.GetScreenshot(driver, Validationfilepath + "profilereport.png", env);
             TestContext.AddTestAttachment(Validationfilepath + "profilereport.png");
         }
 

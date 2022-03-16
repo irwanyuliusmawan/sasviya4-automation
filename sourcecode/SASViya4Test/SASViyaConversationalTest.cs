@@ -14,6 +14,7 @@ namespace SASViya4Test
         IWebDriver driver;
         private IJavaScriptExecutor js;
 
+        string env;
         string url;
         string Validationfilepath;
         string folderPath;
@@ -22,12 +23,13 @@ namespace SASViya4Test
         [SetUp]
         public void SetUp()
         {
-            string env = TestContext.Parameters.Get("environment");
+            env = TestContext.Parameters.Get("environment");
             if (env == "Linux")
             {
                 ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.AddArgument("--headless");
                 chromeOptions.AddArgument("--no-sandbox");
+                chromeOptions.AddArgument("--ignore-certificate-errors");
                 driver = new ChromeDriver("/usr/bin", chromeOptions);
             }
             else
@@ -44,7 +46,7 @@ namespace SASViya4Test
             js = (IJavaScriptExecutor)driver;
         }
 
-        [Test]
+        [Test, Order(1), Category("Playlist3")]
         [TestCase(TestName = "Conversation Designer Related Test Cases")]
         public void Login()
         {
@@ -66,7 +68,7 @@ namespace SASViya4Test
             driver.FindElement(By.XPath("//div[@id='__bar1-BarLeft']/ul/li[1]")).Click();
             Thread.Sleep(5000);
 
-            Automation.GetScreenshot(driver, Validationfilepath + "login.png");
+            Automation.GetScreenshot(driver, Validationfilepath + "login.png", env);
             TestContext.AddTestAttachment(Validationfilepath + "login.png");
             Thread.Sleep(5000);
 
@@ -140,7 +142,7 @@ namespace SASViya4Test
             Thread.Sleep(5000);
             driver.FindElement(By.XPath("//footer[1]/div/button")).Click();
             Thread.Sleep(8000);
-            Automation.GetScreenshot(driver, Validationfilepath + "bot.png");
+            Automation.GetScreenshot(driver, Validationfilepath + "bot.png", env);
             TestContext.AddTestAttachment(Validationfilepath + "bot.png");
 
             driver.FindElement(By.XPath("//footer/div/button[2]")).Click();
