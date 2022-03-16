@@ -2,7 +2,7 @@
 Selenium Automation enables you to perform end-to-end automation tests on a secure, reliable, and scalable SAS Viya 4 deployments. You can perform automated UI testing for validating the different features deployed with SAS viya 4. This post will help you to quickly get started with running your automation test scripts on SAS Viya 4.
 
 ## Objective
-Objective is to validate different below test cases to be executed for SAS Viya 4.
+Objective is to validate different below test cases to be executed for SAS Viya 4 Deployment.
 | S. No  | Test Cases                         
 | -------|:-------------------------------------
 | 1.     | <B>Kuberenetes Deployment Check</B>         
@@ -67,7 +67,7 @@ To prepare or excute the test case below is necessary
      ![sasviya4-automation](../../assets/Selenium13.png)
 
 2. For Linux Ubuntu 20.04
-   - Chromium
+   - Chromium / Chrome Browser instllation on Ubuntu 20.04 LTS
    ```
    sudo apt-get install -y libappindicator1 fonts-liberation
    sudo apt-get install -f
@@ -82,7 +82,7 @@ To prepare or excute the test case below is necessary
    sudo apt -y install google-chrome-stable
    google-chrome --version
    ```
-   - Chrome Driver Setup
+   - Chrome Driver Setup. Install the chrome driver based on the version of chrome browser. As per this example the version is 99.0.4844.51
    ```
    wget https://chromedriver.storage.googleapis.com/99.0.4844.51/chromedriver_linux64.zip
    unzip chromedriver_linux64.zip
@@ -90,7 +90,7 @@ To prepare or excute the test case below is necessary
    sudo chown root:root /usr/bin/chromedriver
    sudo chmod +x /usr/bin/chromedriver
    ```
-   - Dotnet
+   - Dotnet Package installation to run Test Cases on Linux
    ```
    wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
    sudo dpkg -i packages-microsoft-prod.deb
@@ -101,25 +101,32 @@ To prepare or excute the test case below is necessary
    dotnet --version
    ```
     <br />
-3. Accessibilty
-   - SAS Viya 4 deployment and Application URL must be accessible from the machine / server were test is to be performed.
+
+3. Setting up kube config file on Test Machine / Server
+   - Copy config file to access Kubernetes cluster.
+     - For Windows config file need to be copied in path C:\Users\<<UserName>>\.kube
+     - For Linux config file need to be copied in path \home\<<UserName>>\.kube
+
+4. Accessibilty
+   - SAS Viya 4 deployment and Application URL must be accessible from the machine / server were test is to be performed. 
    - SAS Viya 4 should be deployed with all the latest features. 
    - Attached test cases are validated with SAS viya 4 Version 2021.2.3 Stable.
    <br />
 
-4. Others
+5. Others
    - Test case are writtent in C# so basic understanding of C# language is required.
    - HTML DOM Understanding is required to write selenium automation.
 
 ## Executing the Test Case on Windows 10 Environment <br />
-1. Download the code from the gitlab from main branch - https://gitlab.sas.com/sinbrv/sasviya4-automation
+1. Logon or RDP to Windows VM were you had done installation.
+2. Download the code from the gitlab from main branch - https://gitlab.sas.com/sinbrv/sasviya4-automation
    Note - GitLab can be cloned used either with ssh or https. Please check below screenshot for example
    ![sasviya4-automation](../../assets/Selenium2.png)
 
-2. Create the folder Test on C drive and add below 2 input test files. You can get input files from assets folders.
+3. Create the folder Test on C drive and add below 2 input test files. You can get input files from assets folders.
    ![sasviya4-automation](../../assets/Selenium1.png)
 
-3. Open the SASViya4Test solution and Restore the Package. Once solution is ready you can Run Build.
+4. Open the SASViya4Test solution and Restore the Package. Once solution is ready you can Run Build.
    - Open the Solution
      ![sasviya4-automation](../../assets/Selenium3.png)
 
@@ -129,7 +136,7 @@ To prepare or excute the test case below is necessary
    - Validate if Build was success
      ![sasviya4-automation](../../assets/Selenium6.png)
 
-4. Modify RunSettings file as below
+5. Modify RunSettings file as below
    | S. No  | Parameters                 | Description                         
    | -------|:---------------------------| :--------------------------------
    | 1.     | SASEnvMgrUrl               | URL for SAS Environment Manager e.g. 
@@ -184,22 +191,43 @@ Example of .runsettings for Windows
 </RunSettings>
 ```
 
-5. Set the RunSettings in Visual. This is required for the first time during setup.
+6. Set the RunSettings in Visual. This is required for the first time during setup.
    - In Visual Studio, Select Test -> Configure Run Settings -> Auto Detect runsettings file
 
    - In Visual Studio, Select Test -> Configure Run Settings -> Select Solution Wide runsettings file -> Select the .runsettings file from your solution.
      ![sasviya4-automation](../../assets/Selenium8.png)
 
    
-6. Open the Test Explorer and Run the Playlists for running actual test case
+7. Open the Test Explorer and Run the Playlists for running actual test case
    - In Visual Studio, Select Test -> Test Explorer -> Select the Playlist and Run Test
      ![sasviya4-automation](../../assets/Selenium9.png)
      ![sasviya4-automation](../../assets/Selenium10.png)
 
-7. After Successful test you can see the Test Result
+8. After Successful test you can see the Test Result
    ![sasviya4-automation](../../assets/Selenium10.png)
    ![sasviya4-automation](../../assets/Selenium14.png)
 
 
 ## Executing the Test Case on Linux Ubuntu Environment <br />
-<b>TBD</b>
+1. SSH to Ubuntu VM were you had done instllation.
+
+2. Clone the code from the gitlab from main branch - https://gitlab.sas.com/sinbrv/sasviya4-automation
+   Note - GitLab can be cloned used either with ssh or https. Please check below screenshot for example
+   
+3. Create the folder sasviya4test on home directory of the Ubuntu environment. Copy the pubish version code into that directory.
+```
+cd ~
+mkdir sasviya4test
+```
+
+4. Copy 2 input test files into sasviya4test\test\ directory. 2 csv files you can find in below location
+
+5. Run below command to execute the test cases
+```
+dotnet vstest SASViya4Test.dll --Settings:.runsettings --filter TestCategory=Playlist1
+dotnet vstest SASViya4Test.dll --Settings:.runsettings --filter TestCategory=Playlist2
+dotnet vstest SASViya4Test.dll --Settings:.runsettings --filter TestCategory=Playlist3
+```
+
+6. After Successful test you can see the Test Result under test folder.
+   
