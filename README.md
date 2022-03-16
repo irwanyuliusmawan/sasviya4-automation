@@ -49,7 +49,7 @@ Objective is to validate different below test cases to be executed for SAS Viya 
 
 ## Prerequisite
 To prepare or excute the test case below is necessary
-1. For Windows 10 or above
+1. <b>For Windows 10 or above </b>
    - Install Latest version of Chrome Browser. Once installation done then check the Chrome Version as below -
      ![sasviya4-automation](../../assets/Selenium12.png)
 
@@ -66,7 +66,7 @@ To prepare or excute the test case below is necessary
 
      ![sasviya4-automation](../../assets/Selenium13.png)
 
-2. For Linux Ubuntu 20.04
+2. <b> For Linux Ubuntu 20.04 </b>
    - Chromium / Chrome Browser instllation on Ubuntu 20.04 LTS
    ```
    sudo apt-get install -y libappindicator1 fonts-liberation
@@ -220,14 +220,53 @@ cd ~
 mkdir sasviya4test
 ```
 
-4. Copy 2 input test files into sasviya4test\test\ directory. 2 csv files you can find in below location
+4. Copy 2 input test files into sasviya4test\test\ directory. 2 csv files you can find in below location () from cloned project. 
 
-5. Run below command to execute the test cases
+5. Create .runsettings file into sasviya4test directory.
+```
+sudo nano .runsettings
+```
+```
+Example of .runsettings for Windows
+```
+<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+	<RunConfiguration>
+		<!-- TestSessionTimeout was introduced in Visual Studio 2017 version 15.5 -->
+		<!-- Specify timeout in milliseconds. A valid value should be greater than 0 -->
+		<TestSessionTimeout>900000</TestSessionTimeout>
+	</RunConfiguration>
+	<TestRunParameters>
+		<Parameter name="SASEnvMgrUrl" value="https://sinbrv.gelsandbox.aws.unx.sas.com/SASEnvironmentManager" />
+		<Parameter name="SASDriveUrl" value="https://sinbrv.gelsandbox.aws.unx.sas.com/SASDrive" />
+		<Parameter name="SASStudioUrl" value="https://sinbrv.gelsandbox.aws.unx.sas.com/SASStudio" />
+		<Parameter name="SASVisualAnalyticsUrl" value="https://sinbrv.gelsandbox.aws.unx.sas.com/SASVisualAnalytics" />
+		<Parameter name="SASThemeDesigner" value="https://sinbrv.gelsandbox.aws.unx.sas.com/SASThemeDesigner" />
+		<Parameter name="SASDataExplorerUrl" value="https://sinbrv.gelsandbox.aws.unx.sas.com/SASDataExplorer" />
+		<Parameter name="SASLineageUrl" value="https://sinbrv.gelsandbox.aws.unx.sas.com/SASLineage" />
+		<Parameter name="SASDataStudioUrl" value="https://sinbrv.gelsandbox.aws.unx.sas.com/SASDataStudio" />
+		<Parameter name="SASConversationDesignerUrl" value="https://sinbrv.gelsandbox.aws.unx.sas.com/SASConversationDesigner" />
+		<Parameter name="headless" value="true" />
+		<Parameter name="DriverPath" value="NA" />
+		<Parameter name="environment" value="Linux" />
+		<Parameter name="testFilePath" value="/home/ubuntu/sasviya4test/test/csv_file.csv" />
+		<Parameter name="demographicfilepath" value="/home/ubuntu/sasviya4test/test/demographics.csv" />
+		<Parameter name="screenshotFilepath" value="/home/ubuntu/sasviya4test/test/" />
+		<Parameter name="username" value="viya_admin" />
+		<Parameter name="password" value="Password123" />
+		<Parameter name="InitialPageLoadSleep" value="25000" />
+		<Parameter name="IntermediatePageLoadSleep" value="2000" />
+		<!-- C:\Users\sinbrv\csv_file.csv -->
+	</TestRunParameters>
+</RunSettings>
+```
+
+6. Run below command to execute the test cases
 ```
 dotnet vstest SASViya4Test.dll --Settings:.runsettings --filter TestCategory=Playlist1
 dotnet vstest SASViya4Test.dll --Settings:.runsettings --filter TestCategory=Playlist2
 dotnet vstest SASViya4Test.dll --Settings:.runsettings --filter TestCategory=Playlist3
 ```
 
-6. After Successful test you can see the Test Result under test folder.
+7. After Successful test you can see the Test Result under test folder.
    
