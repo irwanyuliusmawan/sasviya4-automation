@@ -7,40 +7,22 @@ using System.Threading;
 
 namespace SASViya4Test
 {
-    [TestFixture]
-    public class SASViyaThemeDesigner
+    public class SASViyaThemeDesigner : BaseClass
     {
         IWebDriver driver;
 
         string env;
         string url;
         string Validationfilepath;
-        string folderPath;
         public TestContext TestContext { get; set; }
 
         [SetUp]
         public void SetUp()
         {
             env = TestContext.Parameters.Get("environment");
-            if (env == "Linux")
-            {
-                ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.AddArgument("--headless");
-                chromeOptions.AddArgument("--no-sandbox");
-                chromeOptions.AddArgument("--ignore-certificate-errors");
-                driver = new ChromeDriver("/usr/bin", chromeOptions);
-            }
-            else
-            {
-                ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.AddArgument("--ignore-ssl-errors=yes");
-                chromeOptions.AddArgument("--ignore-certificate-errors");
-                driver = new ChromeDriver(TestContext.Parameters.Get("DriverPath"), chromeOptions);
-            }
-
+            driver = GetDriver();
             url = TestContext.Parameters.Get("SASThemeDesigner");
-            folderPath = TestContext.Parameters.Get("screenshotFilepath");
-            Validationfilepath = folderPath + "/SASThemeDesigner/";
+            Validationfilepath = GetLocalPath() + GetScreenShotPath();
         }
 
         [Test, Order(1), Category("Playlist1")]

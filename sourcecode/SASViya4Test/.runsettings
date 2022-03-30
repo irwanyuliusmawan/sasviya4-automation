@@ -6,6 +6,8 @@
 		<TestSessionTimeout>900000</TestSessionTimeout>
 	</RunConfiguration>
 	<TestRunParameters>
+		<Parameter name="host" value="https://sinbrv.gelsandbox.aws.unx.sas.com" />
+		<Parameter name="buildenv" value="Demo" />
 		<Parameter name="SASEnvMgrUrl" value="https://sinbrv.gelsandbox.aws.unx.sas.com/SASEnvironmentManager" />
 		<Parameter name="SASDriveUrl" value="https://sinbrv.gelsandbox.aws.unx.sas.com/SASDrive" />
 		<Parameter name="SASStudioUrl" value="https://sinbrv.gelsandbox.aws.unx.sas.com/SASStudio" />

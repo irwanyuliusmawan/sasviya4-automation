@@ -21,7 +21,7 @@ namespace SASViya4Test
             }
             catch
             {
-               return false;
+                return false;
             }
         }
 
@@ -54,6 +54,7 @@ namespace SASViya4Test
             }
             else
             {
+
                 ITakesScreenshot screenshot;
                 screenshot = driver as ITakesScreenshot;
                 Screenshot screenshot1 = screenshot.GetScreenshot();

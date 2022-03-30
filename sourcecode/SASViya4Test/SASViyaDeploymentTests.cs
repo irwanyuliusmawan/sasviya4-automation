@@ -3,7 +3,7 @@ using NUnit.Framework;
 
 namespace SASViya4Test
 {
-    public class SASViyaDeploymentTests
+    public class SASViyaDeploymentTests : BaseClass
     {
         [SetUp]
         public void Setup()

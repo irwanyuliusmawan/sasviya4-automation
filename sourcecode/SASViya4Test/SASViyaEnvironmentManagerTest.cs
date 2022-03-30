@@ -9,8 +9,7 @@ using System.Threading;
 
 namespace SASViya4Test
 {
-    [TestFixture]
-    public class SASViyaEnvironmentManagerTest
+    public class SASViyaEnvironmentManagerTest : BaseClass
     {
         IWebDriver driver;
 
@@ -20,39 +19,24 @@ namespace SASViya4Test
         string ValidationFolderfilepath;
         string AccessDataPagefilepath;
         string AccessServerPagefilepath;
+        string importDemographics;
         string testfile;
         string testfile2;
-        string folderPath;
         public TestContext TestContext { get; set; }
 
         [SetUp]
         public void SetUp()
         {
             env = TestContext.Parameters.Get("environment");
-            if (env == "Linux")
-            {
-                ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.AddArgument("--headless");
-                chromeOptions.AddArgument("--no-sandbox");
-                chromeOptions.AddArgument("--ignore-certificate-errors");
-                driver = new ChromeDriver("/usr/bin", chromeOptions);
-            }
-            else
-            {
-                ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.AddArgument("--ignore-ssl-errors=yes");
-                chromeOptions.AddArgument("--ignore-certificate-errors");
-                driver = new ChromeDriver(TestContext.Parameters.Get("DriverPath"), chromeOptions);
-            }
-
             url = TestContext.Parameters.Get("SASEnvMgrUrl");
             testfile = TestContext.Parameters.Get("testFilePath");
             testfile2 = TestContext.Parameters.Get("demographicfilepath");
-            folderPath = TestContext.Parameters.Get("screenshotFilepath");
-            Loginfilepath = folderPath + "EnvironmentManager/";
-            ValidationFolderfilepath = folderPath + "EnvironmentManager/";
-            AccessDataPagefilepath = folderPath + "EnvironmentManager/";
-            AccessServerPagefilepath = folderPath + "EnvironmentManager/";
+            driver = GetDriver();
+            Loginfilepath = GetLocalPath() + GetScreenShotPath();
+            ValidationFolderfilepath = GetLocalPath() + GetScreenShotPath();
+            AccessDataPagefilepath = GetLocalPath() + GetScreenShotPath();
+            AccessServerPagefilepath = GetLocalPath() + GetScreenShotPath();
+            importDemographics = GetLocalPath() + GetScreenShotPath();
         }
 
        
@@ -278,6 +262,8 @@ namespace SASViya4Test
             var xpath = string.Format("(//div[@id='__xmlview7--availableList-listContent']/ul/li)[1]");
             driver.FindElement(By.XPath(xpath)).Click();
             Thread.Sleep(5000);
+            Automation.GetScreenshot(driver, importDemographics + "import.png", env);
+            TestContext.AddTestAttachment(importDemographics + "import.png");
         }
 
         [TearDown]

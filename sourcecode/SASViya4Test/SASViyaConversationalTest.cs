@@ -8,8 +8,7 @@ using System.Threading;
 
 namespace SASViya4Test
 {
-    [TestFixture]
-    public class SASViyaConversationDesignerTest
+    public class SASViyaConversationDesignerTest : BaseClass
     {
         IWebDriver driver;
         private IJavaScriptExecutor js;
@@ -17,32 +16,15 @@ namespace SASViya4Test
         string env;
         string url;
         string Validationfilepath;
-        string folderPath;
         public TestContext TestContext { get; set; }
 
         [SetUp]
         public void SetUp()
         {
             env = TestContext.Parameters.Get("environment");
-            if (env == "Linux")
-            {
-                ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.AddArgument("--headless");
-                chromeOptions.AddArgument("--no-sandbox");
-                chromeOptions.AddArgument("--ignore-certificate-errors");
-                driver = new ChromeDriver("/usr/bin", chromeOptions);
-            }
-            else
-            {
-                ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.AddArgument("--ignore-ssl-errors=yes");
-                chromeOptions.AddArgument("--ignore-certificate-errors");
-                driver = new ChromeDriver(TestContext.Parameters.Get("DriverPath"), chromeOptions);
-            }
-
             url = TestContext.Parameters.Get("SASConversationDesignerUrl");
-            folderPath = TestContext.Parameters.Get("screenshotFilepath");
-            Validationfilepath = folderPath + "/SASConversationDesigner/";
+            driver = GetDriver();
+            Validationfilepath = GetLocalPath() + GetScreenShotPath();
             js = (IJavaScriptExecutor)driver;
         }
 

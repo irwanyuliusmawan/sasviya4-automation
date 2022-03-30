@@ -8,8 +8,7 @@ using System.Threading;
 
 namespace SASViya4Test
 {
-    [TestFixture]
-    public class SASViyaLineageTest
+    public class SASViyaLineageTest : BaseClass
     {
         IWebDriver driver;
 
@@ -23,25 +22,10 @@ namespace SASViya4Test
         public void SetUp()
         {
             env = TestContext.Parameters.Get("environment");
-            if (env == "Linux")
-            {
-                ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.AddArgument("--headless");
-                chromeOptions.AddArgument("--no-sandbox");
-                chromeOptions.AddArgument("--ignore-certificate-errors");
-                driver = new ChromeDriver("/usr/bin", chromeOptions);
-            }
-            else
-            {
-                ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.AddArgument("--ignore-ssl-errors=yes");
-                chromeOptions.AddArgument("--ignore-certificate-errors");
-                driver = new ChromeDriver(TestContext.Parameters.Get("DriverPath"), chromeOptions);
-            }
-
             url = TestContext.Parameters.Get("SASLineageUrl");
             folderPath = TestContext.Parameters.Get("screenshotFilepath");
-            Validationfilepath = folderPath + "/SASLineage/";
+            driver = GetDriver();
+            Validationfilepath = GetLocalPath() + GetScreenShotPath();
         }
 
         [Test, Order(1), Category("Playlist2")]
